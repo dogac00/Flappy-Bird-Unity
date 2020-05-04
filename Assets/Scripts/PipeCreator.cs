@@ -1,10 +1,11 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PipeCreator : MonoBehaviour
 {
-    public GameObject pipeUp, pipeDown;
-    private static int scoreCount = -1;
+    public GameObject pipeUp, pipeDown, bird;
+    public static int scoreCount = -1;
     public Text scoreTxt;
 
     void OnTriggerEnter2D(Collider2D collider)

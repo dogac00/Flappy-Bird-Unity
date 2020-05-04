@@ -38,7 +38,7 @@ public class BirdScript : MonoBehaviour
 
         var bird = GameObject.Find("bird");
 
-        Destroy(bird);
+        bird.SetActive(false);
     }
 
     public void Success()
