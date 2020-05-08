@@ -12,6 +12,8 @@ public class PipeCreator : MonoBehaviour
     {
         scoreCount++;
 
+        Move.speed += 0.2F;
+
         var curPos = this.transform.position;
         var newPos = new Vector3(curPos.x + 5, curPos.y);
         Instantiate(this.gameObject, newPos, Quaternion.identity);

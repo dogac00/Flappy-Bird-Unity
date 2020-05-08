@@ -32,17 +32,14 @@ public class GameManager : MonoBehaviour
         var mainCamera = Camera.main;
         mainCamera.transform.position = initialCameraPos;
 
-        var script = mainCamera.GetComponent<CameraScript>();
-        script.speed = 2;
+        Move.speed = 2;
         PipeCreator.scoreCount = -1;
         EventSystem.current.SetSelectedGameObject(null);
     }
 	
 	public void GameOver()
     {
-        var camera = Camera.main;
-
-        camera.GetComponent<CameraScript>().speed = 0;
+        Move.speed = 0;
 
         gameOverText.SetActive(true);
 
@@ -56,10 +53,8 @@ public class GameManager : MonoBehaviour
 		foreach (var creator in GameObject.FindObjectsOfType<GameObject>())
 			if (creator.name.StartsWith("PipeCreator"))
 				Destroy(creator);
-		
-        var camera = Camera.main;
 
-        camera.GetComponent<CameraScript>().speed = 0;
+        Move.speed = 0;
 
         successText.SetActive(true);
 

@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class MoveScript : MonoBehaviour
 {
-    public float speed = 10F;
-
     private void Update()
     {
-        transform.position += Vector3.right * Time.deltaTime * speed;
+        transform.position += Vector3.right * Time.deltaTime * Move.speed;
     }
 }
