@@ -14,43 +14,26 @@ public class BirdScript : MonoBehaviour
 
         if (curY < -5)
         {
-            GameOver();
+			var manager = GameObject.Find("Manager");
+			
+			var script = manager.GetComponent<GameManager>();
+			
+            script.GameOver();
 
             return;
         }
 
+        var rb = this.GetComponent<Rigidbody2D>();
+        var velocity = rb.velocity;
+
         if (Input.GetKey(KeyCode.Space))
         {
-            var rb = this.GetComponent<Rigidbody2D>();
-            var force = new Vector2(0, forceQuotient);
-
-            rb.AddForce(force);
+            rb.velocity = Vector2.up * forceQuotient;
         }
-    }
 
-    public void GameOver()
-    {
-        var camera = Camera.main;
-
-        camera.GetComponent<CameraScript>().speed = 0;
-
-        gameOverText.SetActive(true);
-
-        var bird = GameObject.Find("bird");
-
-        bird.SetActive(false);
-    }
-
-    public void Success()
-    {
-        var camera = Camera.main;
-
-        camera.GetComponent<CameraScript>().speed = 0;
-
-        successText.SetActive(true);
-
-        var bird = GameObject.Find("bird");
-
-        Destroy(bird);
+        if (velocity.y > 0)
+            this.transform.eulerAngles = new Vector3(0, 0, 30);
+        else
+            this.transform.eulerAngles = new Vector3(0, 0, -30);
     }
 }

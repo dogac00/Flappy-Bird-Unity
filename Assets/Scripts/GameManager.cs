@@ -3,6 +3,7 @@ using UnityEngine.EventSystems;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject gameOverText, successText;
     public GameObject bird, pipeCreator;
 
     public void Replay()
@@ -33,8 +34,38 @@ public class GameManager : MonoBehaviour
 
         var script = mainCamera.GetComponent<CameraScript>();
         script.speed = 2;
-        PipeCreator.scoreCount = 0;
+        PipeCreator.scoreCount = -1;
         EventSystem.current.SetSelectedGameObject(null);
+    }
+	
+	public void GameOver()
+    {
+        var camera = Camera.main;
+
+        camera.GetComponent<CameraScript>().speed = 0;
+
+        gameOverText.SetActive(true);
+
+        var bird = GameObject.Find("bird");
+
+        bird.SetActive(false);
+    }
+	
+	public void Success()
+    {
+		foreach (var creator in GameObject.FindObjectsOfType<GameObject>())
+			if (creator.name.StartsWith("PipeCreator"))
+				Destroy(creator);
+		
+        var camera = Camera.main;
+
+        camera.GetComponent<CameraScript>().speed = 0;
+
+        successText.SetActive(true);
+
+        var bird = GameObject.Find("bird");
+		
+		bird.SetActive(false);
     }
 
     public void Exit()

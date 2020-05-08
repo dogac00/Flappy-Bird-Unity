@@ -1,14 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class PipeScript : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collider)
     {
-        var bird = GameObject.Find("bird");
+        var manager = GameObject.Find("Manager");
 
-        var script = bird.GetComponent<BirdScript>();
+        var script = manager.GetComponent<GameManager>();
 
         script.GameOver();
     }

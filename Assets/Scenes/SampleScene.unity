@@ -212,7 +212,7 @@ GameObject:
   - component: {fileID: 200986077}
   - component: {fileID: 200986076}
   m_Layer: 5
-  m_Name: Text
+  m_Name: GameOver
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -561,6 +561,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86bc58b58471e7241b2221231aedf21e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameOverText: {fileID: 200986074}
+  successText: {fileID: 1917806956}
   bird: {fileID: 714933445}
   pipeCreator: {fileID: 1761662246}
 --- !u!1 &456463629
@@ -701,7 +703,7 @@ SpriteRenderer:
   m_SortingLayerID: 44787177
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: f113b7e2180e3c0419b67153ef1fd4f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 24f494d9945571140a38cbe03de573a2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -994,7 +996,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.6
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -1040,7 +1042,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameOverText: {fileID: 200986074}
   successText: {fileID: 1917806956}
-  forceQuotient: 50
+  forceQuotient: 5
 --- !u!1 &726438215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1111,7 +1113,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 'Score : 0'
 --- !u!222 &726438218
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1272,7 +1274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pipeUp: {fileID: 1362238093}
   pipeDown: {fileID: 459135746}
-  bird: {fileID: 0}
+  bird: {fileID: 714933445}
   scoreTxt: {fileID: 726438217}
 --- !u!1 &1168523720
 GameObject:
@@ -1509,13 +1511,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1362238093}
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.75, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &1362238096
 Rigidbody2D:
   serializedVersion: 4
