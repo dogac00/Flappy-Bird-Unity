@@ -11,19 +11,22 @@ public class Pipes : MonoBehaviour
 
     void Update()
     {
-        if (this.transform.position.x < -8F)
+        if (manager.isGameOver)
+            return;
+
+        this.transform.position += Vector3.left * Time.deltaTime * manager.gameSpeed;
+
+        if (this.transform.position.x < -8.4F)
         {
             float newX = this.transform.position.x + manager.pipeDistance * 5;
             float newY = Random.Range(-2F, 2F);
 
             this.transform.position = new Vector3(newX, newY);
         }
-
-        this.transform.position += Vector3.left * Time.deltaTime * manager.gameSpeed;
     }
 
-    //void OnTriggerEnter2D(Collider2D col)
-    //{
-    //    manager.IncrementScore();
-    //}
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        manager.IncrementScore();
+    }
 }

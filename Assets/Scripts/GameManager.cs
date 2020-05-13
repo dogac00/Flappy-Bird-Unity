@@ -1,5 +1,4 @@
-﻿using System.Linq;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -10,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     public GameObject gameOverText;
     public Text score;
+    public bool isGameOver;
 
     public void Replay()
     {
@@ -18,11 +18,13 @@ public class GameManager : MonoBehaviour
 	
 	public void GameOver()
     {
+        isGameOver = true;
+        
         gameOverText.SetActive(true);
 
-        //var activeBird = GameObject.Find("bird");
+        var bird = GameObject.Find("bird");
 
-        //activeBird.SetActive(false);
+        bird.SetActive(false);
     }
 
     public void Exit()
@@ -32,8 +34,8 @@ public class GameManager : MonoBehaviour
 
     public void IncrementScore()
     {
-        var numText = score.text.Replace("Score : 0", "");
-        var num = int.Parse(numText);
-        score.text = $"Score : {++num}";
+        var scoreNum = int.Parse(score.text);
+
+        score.text = $"Score : {++scoreNum}";
     }
 }
