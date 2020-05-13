@@ -1,70 +1,39 @@
-﻿using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using System.Linq;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject gameOverText, successText;
-    public GameObject bird, pipeCreator;
+    public float gameSpeed = 2F;
+    public float pipeDistance = 4.8F;
+
+    public GameObject gameOverText;
+    public Text score;
 
     public void Replay()
     {
-        var initialBirdPos = new Vector3(-6, 0, 0);
-        var initialCameraPos = new Vector3(0, 0, -10);
-        var pipeCreatorPos = new Vector3(initialBirdPos.x + 5, 0);
-
-        foreach (var pc in GameObject.FindObjectsOfType<GameObject>())
-            if (pc.name.StartsWith("PipeCreator"))
-                Destroy(pc);
-        foreach (var pipe in GameObject.FindObjectsOfType<GameObject>())
-            if (pipe.name.StartsWith("pipe-up") || pipe.name.StartsWith("pipe-down"))
-                Destroy(pipe);
-
-        bird.transform.position = initialBirdPos;
-        bird.SetActive(true);
-        var gameOver = bird.GetComponent<BirdScript>().gameOverText;
-        var success = bird.GetComponent<BirdScript>().successText;
-        gameOver.SetActive(false);
-        success.SetActive(false);
-        var creator = Instantiate(pipeCreator, pipeCreatorPos, Quaternion.identity);
-        creator.SetActive(true);
-        creator.name = "PipeCreator";
-
-        var mainCamera = Camera.main;
-        mainCamera.transform.position = initialCameraPos;
-
-        Move.speed = 2;
-        PipeCreator.scoreCount = -1;
-        EventSystem.current.SetSelectedGameObject(null);
+        SceneManager.LoadScene(0);
     }
 	
 	public void GameOver()
     {
-        Move.speed = 0;
-
         gameOverText.SetActive(true);
 
-        var bird = GameObject.Find("bird");
+        //var activeBird = GameObject.Find("bird");
 
-        bird.SetActive(false);
-    }
-	
-	public void Success()
-    {
-		foreach (var creator in GameObject.FindObjectsOfType<GameObject>())
-			if (creator.name.StartsWith("PipeCreator"))
-				Destroy(creator);
-
-        Move.speed = 0;
-
-        successText.SetActive(true);
-
-        var bird = GameObject.Find("bird");
-		
-		bird.SetActive(false);
+        //activeBird.SetActive(false);
     }
 
     public void Exit()
     {
         Application.Quit();
+    }
+
+    public void IncrementScore()
+    {
+        var numText = score.text.Replace("Score : 0", "");
+        var num = int.Parse(numText);
+        score.text = $"Score : {++num}";
     }
 }

@@ -1,0 +1,14 @@
+PIPE
+- 3 pipe konumu x<-5 komununa +10 ekle y de -3+3 random pozisyon seç(prefab)
+- update -> her 3 objenin xlerini azalt.. 
+
+KUŞTA 
+- yer çekimi 
+- zıplatma -> velocity ver. Kafa hareketi.   
+- çarpma halinde, gameover göster score göster. Replay butonu var. 
+
+REPLAY 
+- Sceenmanagement.repla
+
+Arkaalan ve Camera - Sabit 
+- farklı birşey yok. 
